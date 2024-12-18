@@ -1,17 +1,19 @@
 
 export interface LocationInfo {
-    status: string
-    country: string
+    ipVersion: number
+    ipAddress: string
+    latitude: number
+    longitude: number
+    countryName: string
     countryCode: string
-    region: string
+    timeZone: string
+    zipCode: string
+    cityName: string
     regionName: string
-    city: string
-    zip: string
-    lat: number
-    lon: number
-    timezone: string
-    isp: string
-    org: string
-    as: string
-    query: string
+    isProxy: boolean
+    continent: string
+    continentCode: string
+    language: string
+    timeZones: string[]
+    tlds: string[]
   }

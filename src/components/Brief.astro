@@ -55,7 +55,7 @@
     const resIP = await fetch('https://api64.ipify.org?format=json');
     const { ip } = await resIP.json();
     //get user location
-    const resLocation = await fetch(`http://ip-api.com/json/${ip}`);
+    const resLocation = await fetch(`https://freeipapi.com/api/json/${ip}`);
 
     const locationInfo:LocationInfo = await resLocation.json();
 
@@ -63,7 +63,7 @@
     const codePoints = locationInfo.countryCode.toUpperCase().split('').map(char => 127397 + char.charCodeAt(0));
     var emoji = String.fromCodePoint(...codePoints);
 
-    const locationtext = `${locationInfo.city} ${emoji}`;
+    const locationtext = `${locationInfo.cityName} ${emoji}`;
 
     location.textContent = locationtext;
 
