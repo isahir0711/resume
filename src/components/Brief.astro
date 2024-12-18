@@ -1,16 +1,23 @@
+---
+
+---
+
 <!-- Brief -->
 <section class="flex flex-col mt-20 max-w-[600px] dark:text-white">
   <!-- Profile Picture and Company -->
   <div class="flex items-center gap-4">
     <img src="https://avatars.githubusercontent.com/u/56800881?v=4" class="rounded-full h-[90px]" />
-    <p class="text-xl">
-      Working At
-      <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/apex-systems/posts/?feedView=all"
-        class="inline-flex animate-text-gradient bg-gradient-to-r from-[#b2a8fd] via-[#8678f9] to-[#c7d2fe] bg-[200%_auto] bg-clip-text text-xl text-transparent"
-      >
-        Apex Systems
-      </a>
-    </p>
+    <div class="flex flex-col gap-2">
+      <p class="text-xl">
+        Working At
+        <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/apex-systems/posts/?feedView=all"
+          class="inline-flex animate-text-gradient bg-gradient-to-r from-[#b2a8fd] via-[#8678f9] to-[#c7d2fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
+          Apex Systems
+        </a>
+      </p>
+
+      <p class="text-sm animate-pulse">Saludos a: <span id="location" class="transition-opacity"></span></p>
+    </div>
   </div>
   <!-- Name and Description -->
   <div class="flex flex-col gap-4 mt-4">
@@ -32,3 +39,36 @@
         </a>
      </div>
 </section>
+
+<script>
+  import type { LocationInfo } from "../types/location";
+  // Get the location element
+  const getLocationAsync = async () =>{
+    const location = document.getElementById('location');
+
+    if(location == null)
+      return;
+
+    location.classList.add('opacity-0');
+
+    //get user public ip
+    const resIP = await fetch('https://api64.ipify.org?format=json');
+    const { ip } = await resIP.json();
+    //get user location
+    const resLocation = await fetch(`http://ip-api.com/json/${ip}`);
+
+    const locationInfo:LocationInfo = await resLocation.json();
+
+    
+    const codePoints = locationInfo.countryCode.toUpperCase().split('').map(char => 127397 + char.charCodeAt(0));
+    var emoji = String.fromCodePoint(...codePoints);
+
+    const locationtext = `${locationInfo.city} ${emoji}`;
+
+    location.textContent = locationtext;
+
+    location.classList.remove('opacity-0');
+  }
+
+  getLocationAsync();
+</script>
