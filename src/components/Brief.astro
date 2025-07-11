@@ -14,9 +14,7 @@
           class="inline-flex animate-text-gradient bg-gradient-to-r from-[#b2a8fd] via-[#8678f9] to-[#c7d2fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">
           Apex Systems
         </a>
-      </p>
-
-      <p class="text-sm">Saludos a: <span id="location" class="animate-pulse transition-opacity"></span></p>
+      </p> 
     </div>
   </div>
   <!-- Name and Description -->
@@ -40,35 +38,3 @@
      </div>
 </section>
 
-<script>
-  import type { LocationInfo } from "../types/location";
-  // Get the location element
-  const getLocationAsync = async () =>{
-    const location = document.getElementById('location');
-
-    if(location == null)
-      return;
-
-    location.classList.add('opacity-0');
-
-    //get user public ip
-    const resIP = await fetch('https://api64.ipify.org?format=json');
-    const { ip } = await resIP.json();
-    //get user location
-    const resLocation = await fetch(`https://freeipapi.com/api/json/${ip}`);
-
-    const locationInfo:LocationInfo = await resLocation.json();
-
-    
-    const codePoints = locationInfo.countryCode.toUpperCase().split('').map(char => 127397 + char.charCodeAt(0));
-    var emoji = String.fromCodePoint(...codePoints);
-
-    const locationtext = `${locationInfo.cityName} ${emoji}`;
-
-    location.textContent = locationtext;
-
-    location.classList.remove('opacity-0');
-  }
-
-  getLocationAsync();
-</script>
