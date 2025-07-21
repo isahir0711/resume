@@ -1,3 +1,7 @@
+---
+const { title } = Astro.props;
+---
+
 <!doctype html>
 <html lang="es">
     <head>
@@ -5,19 +9,28 @@
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/code.svg" />
         <meta name="generator" content={Astro.generator} />
-        <title>Isahir Zavala</title>
-        <meta name="description" content="Isahir Zavala Desarrolador de Software con +3 años de experiencia" />
-        <meta property="og:title" content="Isahir Zavala Desarrolador de Software con +3 años de experiencia" />
-        <meta property="og:description" content="Aqui encontraras mi experiencia profesional y proyectos personales" />
+        <title>{title}</title>
+        <meta
+            name="description"
+            content="Isahir Zavala Desarrolador de Software con +3 años de experiencia"
+        />
+        <meta
+            property="og:title"
+            content="Isahir Zavala Desarrolador de Software con +3 años de experiencia"
+        />
+        <meta
+            property="og:description"
+            content="Aqui encontraras mi experiencia profesional y proyectos personales"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://isahir.com" />
-	</head>
-    <body id="brief" class="max-w-[950px] px-6 mx-auto pb-12 dark:bg-slate-900 ">
-        <slot/>
+    </head>
+    <body id="brief" class="max-w-[950px] px-6 mx-auto pb-12 dark:bg-slate-900">
+        <slot />
     </body>
 </html>
 <style>
-    html{
+    html {
         scroll-behavior: smooth;
     }
 </style>

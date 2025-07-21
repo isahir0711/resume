@@ -3,8 +3,8 @@ import Post from "./Post.astro";
 const posts = await Astro.glob("../pages/blog/*.md");
 ---
 
-<section>
-    <h2 class="text-3xl font-semibold mb-4">Posts</h2>
+<h2 class="text-3xl font-semibold mb-4">Posts</h2>
+<section class="flex flex-col gap-3">
     {
         posts.map((data) => (
             <Post
