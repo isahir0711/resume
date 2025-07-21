@@ -1,2 +1,21 @@
-<h2 class="text-3xl font-semibold">Posts</h2>
-<a href="blog/1">P1</a>
+---
+import Post from "./Post.astro";
+const posts = await Astro.glob("../pages/blog/*.md");
+---
+
+<section>
+    <h2 class="text-3xl font-semibold mb-4">Posts</h2>
+    {
+        posts.map((data) => (
+            <Post
+                title={data.frontmatter.title}
+                description={data.frontmatter.description}
+                date={data.frontmatter.date}
+                topic={data.frontmatter.topic}
+                url={data.url}
+            />
+        ))
+    }
+</section>
+
+<script></script>
