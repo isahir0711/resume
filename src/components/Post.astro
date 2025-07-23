@@ -5,13 +5,13 @@ const { title, description, topic, date, url } = Astro.props;
 ---
 
 <article
-    class="flex flex-col gap-4 border-solid border-2 bg-slate-50 rounded-md py-3 px-4"
+    class="flex flex-col gap-4 border-solid border-2 bg-slate-50 dark:bg-slate-800 rounded-md py-3 px-4 dark:border-slate-700"
 >
     <div class="flex flex-col gap-1">
-        <h3 class="font-semibold hover:underline">
+        <h3 class="font-semibold hover:underline dark:text-white">
             {title}
         </h3>
-        <p>
+        <p class="dark:text-gray-300">
             {description}
         </p>
     </div>
@@ -21,7 +21,7 @@ const { title, description, topic, date, url } = Astro.props;
             <Badge text={date} />
         </div>
         <a
-            class="flex gap-2 hover:text-[#8678f9] transition-colors text-sm"
+            class="flex gap-2 hover:text-[#8678f9] transition-colors text-sm dark:text-gray-300 dark:hover:text-[#8678f9]"
             href={url}
         >
             Leer mas
