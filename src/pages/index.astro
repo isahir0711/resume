@@ -1,16 +1,16 @@
 ---
 import Brief from "../components/Brief.astro";
 import Experience from "../components/Experience.astro";
-import Navbar from "../components/Navbar.astro";
 import Posts from "../components/Posts.astro";
 import Proyects from "../components/Proyects.astro";
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Isahir">
-  <Brief />
-  <Experience />
-  <Posts />
-  <!-- <Proyects /> -->
+  <div class="flex flex-col gap-16">
+    <Brief />
+    <Experience />
+    <Proyects />
+    <Posts />
+  </div>
 </Layout>
